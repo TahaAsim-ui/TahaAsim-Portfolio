@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Taha Asim's interactive software, data science, data engineering, and AI portfolio."
+    />
+    <title>Taha Asim | Software, Data & AI Portfolio</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="space-canvas" aria-hidden="true"></canvas>
+    <div class="scanline" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Taha Asim home">
+        <span class="brand-mark">TA</span>
+        <span>Taha Asim</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#systems">Skills</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Software Developer · Data Scientist · Data Engineer</p>
+          <h1>Building products, models, and data systems that actually work.</h1>
+          <p class="hero-text">
+            I work across the stack: web apps, machine learning models, ETL pipelines,
+            AI tools, dashboards, and interactive prototypes. The theme is cinematic,
+            but the point is practical: show the range, the systems thinking, and the
+            projects behind it.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#projects">Explore Projects</a>
+            <a class="secondary-action" href="#contact">Open Channel</a>
+          </div>
+        </div>
+
+        <aside class="orbit-console" aria-label="Portfolio status">
+          <div class="console-header">
+            <span>Endurance Console</span>
+            <span id="mission-clock">00:00:00</span>
+          </div>
+          <div class="gravity-well" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <dl class="signal-grid">
+            <div>
+              <dt>Focus</dt>
+              <dd>Multi-Discipline</dd>
+            </div>
+            <div>
+              <dt>Mode</dt>
+              <dd>Interactive</dd>
+            </div>
+            <div>
+              <dt>Base</dt>
+              <dd>Toronto</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>Open to work</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="section-panel intro-panel" aria-label="Profile summary">
+        <div>
+          <p class="section-kicker">Profile</p>
+          <h2>Comfortable moving between software, data, and AI.</h2>
+        </div>
+        <p>
+          My work spans full-stack platforms, finance apps, machine learning, data
+          pipelines, document AI, automation, and game prototypes. I like roles where
+          I can connect product thinking, technical implementation, and data-driven
+          decisions instead of staying boxed into one narrow lane.
+        </p>
+      </section>
+
+      <section class="missions" id="projects">
+        <div class="section-heading">
+          <p class="section-kicker">Project Archive</p>
+          <h2>Selected projects</h2>
+        </div>
+
+        <div class="mission-layout">
+          <div class="mission-list" role="tablist" aria-label="Project list"></div>
+          <article class="mission-detail" aria-live="polite">
+            <div class="mission-orbit" aria-hidden="true"></div>
+            <p class="mission-type" id="mission-type"></p>
+            <h3 id="mission-title"></h3>
+            <p id="mission-description"></p>
+            <ul class="mission-points" id="mission-points"></ul>
+            <div class="tech-row" id="mission-tech"></div>
+            <div class="mission-links" id="mission-links"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="systems" id="systems">
+        <div class="section-heading">
+          <p class="section-kicker">Skills & Range</p>
+          <h2>What I work with</h2>
+        </div>
+        <div class="filter-bar" aria-label="Skill filters"></div>
+        <div class="skill-grid"></div>
+      </section>
+
+      <section class="resume-section" id="resume">
+        <div class="section-heading">
+          <p class="section-kicker">Resume</p>
+          <h2>One overview</h2>
+        </div>
+        <div class="resume-card">
+          <div>
+            <p class="resume-label">Taha Asim Resume</p>
+            <h3>Software, data, AI, and engineering project work.</h3>
+            <p>
+              A single resume entry point backed by the project archive above, so the
+              page shows the full range without making visitors choose between versions.
+            </p>
+          </div>
+          <div class="resume-actions">
+            <a href="./assets/resumes/TahaAsim_Dev_Resume.pdf" target="_blank" rel="noreferrer">View Resume</a>
+            <a href="https://github.com/TahaAsim-ui" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div>
+          <p class="section-kicker">Transmission</p>
+          <h2>Let’s build the next thing.</h2>
+          <p>
+            Send over the role, project brief, or collaboration idea. I’ll bring the
+            engineering brain, data instincts, and builder energy.
+          </p>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:tasim8321@gmail.com">tasim8321@gmail.com</a>
+          <a href="tel:4373297756">437-329-7756</a>
+          <a href="https://www.linkedin.com/in/taha-asim-827333228/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
