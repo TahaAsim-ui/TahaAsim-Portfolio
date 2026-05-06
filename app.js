@@ -152,20 +152,6 @@ const timelineItems = [
     ]
   },
   {
-    title: "Smart Scout",
-    type: "Project",
-    category: "project",
-    date: "May 2026 - In progress",
-    meta: "Football recruitment web app",
-    description:
-      "A scouting product for searching football players, comparing player DNA, and finding similar or undervalued alternatives.",
-    points: [
-      "Built with Next.js, TypeScript, Prisma, PostgreSQL, and seeded player data.",
-      "Includes player profiles, similar-player ranking, AI Scout Search, and comparison views.",
-      "Still being worked on, with future plans for richer search behavior and live top-five-league data."
-    ]
-  },
-  {
     title: "York University",
     type: "Education",
     category: "education",
@@ -272,16 +258,10 @@ const skillGrid = document.querySelector(".skill-grid");
 const clock = document.querySelector("#mission-clock");
 const timelineFilterBar = document.querySelector(".timeline-filter-bar");
 const timelineTrack = document.querySelector(".timeline-track");
-const timelineType = document.querySelector("#timeline-type");
-const timelineTitle = document.querySelector("#timeline-title");
-const timelineMeta = document.querySelector("#timeline-meta");
-const timelineDescription = document.querySelector("#timeline-description");
-const timelinePoints = document.querySelector("#timeline-points");
 
 let selectedProject = 0;
 let selectedFilter = "all";
 let selectedTimelineFilter = "all";
-let selectedTimelineItem = 0;
 
 function renderProjects() {
   missionList.innerHTML = "";
@@ -353,10 +333,9 @@ function renderSkills() {
 
 function renderTimelineFilters() {
   const filters = [
-    ["all", "All Signals"],
+    ["all", "All"],
     ["experience", "Experience"],
     ["education", "Education"],
-    ["project", "Projects"],
   ];
 
   timelineFilterBar.innerHTML = "";
@@ -367,10 +346,8 @@ function renderTimelineFilters() {
     button.textContent = label;
     button.addEventListener("click", () => {
       selectedTimelineFilter = value;
-      selectedTimelineItem = 0;
       renderTimelineFilters();
       renderTimeline();
-      renderTimelineDetail();
     });
     timelineFilterBar.appendChild(button);
   });
@@ -384,36 +361,23 @@ function renderTimeline() {
   const visible = getVisibleTimelineItems();
   timelineTrack.innerHTML = visible
     .map(
-      (item, index) => `
-        <button class="timeline-node${index === selectedTimelineItem ? " active" : ""}" type="button" data-index="${index}">
+      (item) => `
+        <div class="timeline-entry">
           <span class="timeline-dot" aria-hidden="true"></span>
-          <span class="timeline-date">${item.date}</span>
-          <strong>${item.title}</strong>
-          <span>${item.meta}</span>
-        </button>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-type">${item.type}</span>
+              <span class="timeline-date">${item.date}</span>
+            </div>
+            <h3 class="timeline-card-title">${item.title}</h3>
+            <p class="timeline-card-meta">${item.meta}</p>
+            <p class="timeline-card-desc">${item.description}</p>
+            <ul class="timeline-points">${item.points.map((p) => `<li>${p}</li>`).join("")}</ul>
+          </div>
+        </div>
       `
     )
     .join("");
-
-  timelineTrack.querySelectorAll(".timeline-node").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedTimelineItem = Number(button.dataset.index);
-      renderTimeline();
-      renderTimelineDetail();
-    });
-  });
-}
-
-function renderTimelineDetail() {
-  const visible = getVisibleTimelineItems();
-  const item = visible[selectedTimelineItem] ?? visible[0];
-  if (!item) return;
-
-  timelineType.textContent = item.type;
-  timelineTitle.textContent = item.title;
-  timelineMeta.textContent = `${item.meta} · ${item.date}`;
-  timelineDescription.textContent = item.description;
-  timelinePoints.innerHTML = item.points.map((point) => `<li>${point}</li>`).join("");
 }
 
 function tickClock() {
@@ -538,7 +502,6 @@ renderProjects();
 renderProjectDetail();
 renderTimelineFilters();
 renderTimeline();
-renderTimelineDetail();
 renderFilters();
 renderSkills();
 tickClock();
