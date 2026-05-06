@@ -207,6 +207,8 @@ const timelineItems = [
   }
 ];
 
+const timelineYears = ["2020", "2022", "2023", "2025", "2026"];
+
 const skills = [
   {
     title: "Software Product Development",
@@ -264,6 +266,7 @@ let selectedFilter = "all";
 let selectedTimelineFilter = "all";
 
 function renderProjects() {
+  if (!missionList) return;
   missionList.innerHTML = "";
   projects.forEach((project, index) => {
     const button = document.createElement("button");
@@ -282,6 +285,7 @@ function renderProjects() {
 }
 
 function renderProjectDetail() {
+  if (!missionType || !missionTitle || !missionDescription || !missionPoints || !missionTech || !missionLinks) return;
   const project = projects[selectedProject];
   missionType.textContent = project.type;
   missionTitle.textContent = project.title;
@@ -294,6 +298,7 @@ function renderProjectDetail() {
 }
 
 function renderFilters() {
+  if (!filterBar) return;
   const filters = [
     ["all", "All"],
     ["software", "Software"],
@@ -317,6 +322,7 @@ function renderFilters() {
 }
 
 function renderSkills() {
+  if (!skillGrid) return;
   const visible = skills.filter((skill) => selectedFilter === "all" || skill.category === selectedFilter);
   skillGrid.innerHTML = visible
     .map(
@@ -332,6 +338,7 @@ function renderSkills() {
 }
 
 function renderTimelineFilters() {
+  if (!timelineFilterBar) return;
   const filters = [
     ["all", "All"],
     ["experience", "Experience"],
@@ -358,26 +365,56 @@ function getVisibleTimelineItems() {
 }
 
 function renderTimeline() {
+  if (!timelineTrack) return;
   const visible = getVisibleTimelineItems();
-  timelineTrack.innerHTML = visible
-    .map(
-      (item) => `
-        <div class="timeline-entry">
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <div class="timeline-card">
-            <div class="timeline-card-header">
-              <span class="timeline-type">${item.type}</span>
-              <span class="timeline-date">${item.date}</span>
+  const yearGroups = timelineYears.map((year) => ({
+    year,
+    items: visible.filter((item) => getTimelineStartYear(item) === year),
+  }));
+
+  timelineTrack.innerHTML = `
+    <div class="timeline-map" style="--year-count: ${timelineYears.length}">
+      ${yearGroups
+        .map(
+          (group, yearIndex) => `
+            <div class="timeline-year" style="--year-index: ${yearIndex}">
+              <div class="timeline-events timeline-events-top">
+                ${group.items
+                  .filter((_, itemIndex) => (yearIndex + itemIndex) % 2 === 0)
+                  .map(renderTimelineCard)
+                  .join("")}
+              </div>
+              <div class="timeline-axis-point">
+                <span class="timeline-pin" aria-hidden="true"></span>
+                <strong>${group.year}</strong>
+              </div>
+              <div class="timeline-events timeline-events-bottom">
+                ${group.items
+                  .filter((_, itemIndex) => (yearIndex + itemIndex) % 2 !== 0)
+                  .map(renderTimelineCard)
+                  .join("")}
+              </div>
             </div>
-            <h3 class="timeline-card-title">${item.title}</h3>
-            <p class="timeline-card-meta">${item.meta}</p>
-            <p class="timeline-card-desc">${item.description}</p>
-            <ul class="timeline-points">${item.points.map((p) => `<li>${p}</li>`).join("")}</ul>
-          </div>
-        </div>
-      `
-    )
-    .join("");
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderTimelineCard(item) {
+  return `
+    <article class="timeline-card">
+      <p class="timeline-date">${item.date}</p>
+      <h3 class="timeline-card-title">${item.title}</h3>
+      <p class="timeline-card-meta">${item.meta}</p>
+      <p class="timeline-card-desc">${item.description}</p>
+    </article>
+  `;
+}
+
+function getTimelineStartYear(item) {
+  return item.date.match(/\d{4}/)?.[0] ?? "";
 }
 
 function tickClock() {
