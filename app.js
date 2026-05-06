@@ -1,5 +1,19 @@
 const projects = [
   {
+    title: "Smart Scout Football Recruitment Tool",
+    type: "Product + AI Search",
+    short: "Next.js, Prisma, PostgreSQL",
+    description:
+      "A football recruitment web app for searching players, comparing player DNA, and finding similar or underrated alternatives. This project is still being actively worked on.",
+    points: [
+      "Built a search-first scouting workflow with player profiles, comparison views, and similar-player recommendations.",
+      "Added deterministic AI Scout Search for prompts like 'Find me a cheaper right winger similar to Saka under 23.'",
+      "Seeded a PostgreSQL database with player stats, DNA vectors, clubs, leagues, and style tags while leaving room for future Sportmonks live-data ingestion."
+    ],
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AI Search"],
+    links: [{ label: "Repository", url: "https://github.com/TahaAsim-ui/football-scout" }]
+  },
+  {
     title: "Full-Stack Electric Car E-Commerce Platform",
     type: "Software Engineering",
     short: "React, Node, Express, MongoDB",
@@ -109,6 +123,104 @@ const projects = [
   }
 ];
 
+const timelineItems = [
+  {
+    title: "Mercor",
+    type: "Experience",
+    category: "experience",
+    date: "Jan 2026 - Present",
+    meta: "AI Trainer",
+    description:
+      "Evaluating LLM-generated responses and training model behavior toward clearer, more accurate, and more useful outputs.",
+    points: [
+      "Assessed model responses for accuracy, relevance, clarity, and completeness.",
+      "Identified weaknesses in AI outputs and provided feedback to improve response quality.",
+      "Created tutorials and training materials to guide AI systems toward better performance."
+    ]
+  },
+  {
+    title: "McGill University",
+    type: "Education",
+    category: "education",
+    date: "Jan 2026 - Present",
+    meta: "Master of Management in Analytics",
+    description:
+      "Graduate analytics program focused on applying data, business thinking, and technical tools to decision-making.",
+    points: [
+      "Building toward deeper analytics, data strategy, and applied business problem-solving.",
+      "Connecting software and data engineering experience with management-facing analytics."
+    ]
+  },
+  {
+    title: "Smart Scout",
+    type: "Project",
+    category: "project",
+    date: "May 2026 - In progress",
+    meta: "Football recruitment web app",
+    description:
+      "A scouting product for searching football players, comparing player DNA, and finding similar or undervalued alternatives.",
+    points: [
+      "Built with Next.js, TypeScript, Prisma, PostgreSQL, and seeded player data.",
+      "Includes player profiles, similar-player ranking, AI Scout Search, and comparison views.",
+      "Still being worked on, with future plans for richer search behavior and live top-five-league data."
+    ]
+  },
+  {
+    title: "York University",
+    type: "Education",
+    category: "education",
+    date: "Sep 2020 - Apr 2025",
+    meta: "Honors Bachelor of Science, Computer Science",
+    description:
+      "Computer science foundation across software development, data structures, systems thinking, and applied technical projects.",
+    points: [
+      "Built projects across full-stack development, data science, data engineering, and interactive systems.",
+      "Developed the technical base behind the portfolio's product and AI work."
+    ]
+  },
+  {
+    title: "Toronto Hydro",
+    type: "Experience",
+    category: "experience",
+    date: "Jan 2023 - Dec 2023",
+    meta: "Data & Tech Intern",
+    description:
+      "Worked on reporting, data pipelines, automation, and operational dashboards for field and business teams.",
+    points: [
+      "Created an interactive dashboard with 15+ KPIs using SQL, Excel VBA, and SAP.",
+      "Built operational reporting from SAP field deployment data, improving visibility into field operations.",
+      "Supported data extraction, transformation, and loading for structured analysis."
+    ]
+  },
+  {
+    title: "Lingobility",
+    type: "Experience",
+    category: "experience",
+    date: "Aug 2022 - Mar 2023",
+    meta: "Front End Developer Intern",
+    description:
+      "Helped build an early-stage language-learning application from design into a partially functioning product.",
+    points: [
+      "Contributed to interface development, testing, and frontend implementation.",
+      "Worked with CSS and manual testing while collaborating in a remote internship setting."
+    ]
+  },
+  {
+    title: "hEr VOLUTION",
+    type: "Experience",
+    category: "experience",
+    date: "Jul 2022 - Sep 2022",
+    meta: "Coding Instructor",
+    description:
+      "Taught programming fundamentals through interactive lessons, review sessions, and technical support.",
+    points: [
+      "Helped students build programming skills and apply concepts in real-world projects.",
+      "Simulated debugging and QA scenarios to strengthen problem-solving confidence.",
+      "Supported structured learning and test preparation."
+    ]
+  }
+];
+
 const skills = [
   {
     title: "Software Product Development",
@@ -158,9 +270,18 @@ const missionLinks = document.querySelector("#mission-links");
 const filterBar = document.querySelector(".filter-bar");
 const skillGrid = document.querySelector(".skill-grid");
 const clock = document.querySelector("#mission-clock");
+const timelineFilterBar = document.querySelector(".timeline-filter-bar");
+const timelineTrack = document.querySelector(".timeline-track");
+const timelineType = document.querySelector("#timeline-type");
+const timelineTitle = document.querySelector("#timeline-title");
+const timelineMeta = document.querySelector("#timeline-meta");
+const timelineDescription = document.querySelector("#timeline-description");
+const timelinePoints = document.querySelector("#timeline-points");
 
 let selectedProject = 0;
 let selectedFilter = "all";
+let selectedTimelineFilter = "all";
+let selectedTimelineItem = 0;
 
 function renderProjects() {
   missionList.innerHTML = "";
@@ -228,6 +349,71 @@ function renderSkills() {
       `
     )
     .join("");
+}
+
+function renderTimelineFilters() {
+  const filters = [
+    ["all", "All Signals"],
+    ["experience", "Experience"],
+    ["education", "Education"],
+    ["project", "Projects"],
+  ];
+
+  timelineFilterBar.innerHTML = "";
+  filters.forEach(([value, label]) => {
+    const button = document.createElement("button");
+    button.className = `timeline-filter${value === selectedTimelineFilter ? " active" : ""}`;
+    button.type = "button";
+    button.textContent = label;
+    button.addEventListener("click", () => {
+      selectedTimelineFilter = value;
+      selectedTimelineItem = 0;
+      renderTimelineFilters();
+      renderTimeline();
+      renderTimelineDetail();
+    });
+    timelineFilterBar.appendChild(button);
+  });
+}
+
+function getVisibleTimelineItems() {
+  return timelineItems.filter((item) => selectedTimelineFilter === "all" || item.category === selectedTimelineFilter);
+}
+
+function renderTimeline() {
+  const visible = getVisibleTimelineItems();
+  timelineTrack.innerHTML = visible
+    .map(
+      (item, index) => `
+        <button class="timeline-node${index === selectedTimelineItem ? " active" : ""}" type="button" data-index="${index}">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <span class="timeline-date">${item.date}</span>
+          <strong>${item.title}</strong>
+          <span>${item.meta}</span>
+        </button>
+      `
+    )
+    .join("");
+
+  timelineTrack.querySelectorAll(".timeline-node").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedTimelineItem = Number(button.dataset.index);
+      renderTimeline();
+      renderTimelineDetail();
+    });
+  });
+}
+
+function renderTimelineDetail() {
+  const visible = getVisibleTimelineItems();
+  const item = visible[selectedTimelineItem] ?? visible[0];
+  if (!item) return;
+
+  timelineType.textContent = item.type;
+  timelineTitle.textContent = item.title;
+  timelineMeta.textContent = `${item.meta} · ${item.date}`;
+  timelineDescription.textContent = item.description;
+  timelinePoints.innerHTML = item.points.map((point) => `<li>${point}</li>`).join("");
 }
 
 function tickClock() {
@@ -350,6 +536,9 @@ function startSpaceCanvas() {
 
 renderProjects();
 renderProjectDetail();
+renderTimelineFilters();
+renderTimeline();
+renderTimelineDetail();
 renderFilters();
 renderSkills();
 tickClock();

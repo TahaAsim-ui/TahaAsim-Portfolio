@@ -165,6 +165,7 @@ main {
 .eyebrow,
 .section-kicker,
 .mission-type,
+.timeline-type,
 .resume-label {
   margin: 0;
   color: var(--amber);
@@ -248,6 +249,8 @@ h3 {
 
 .orbit-console,
 .mission-detail,
+.timeline-detail,
+.timeline-console,
 .resume-card {
   border: 1px solid var(--line);
   background: var(--panel);
@@ -339,6 +342,7 @@ h3 {
 
 .section-panel,
 .missions,
+.timeline-section,
 .systems,
 .resume-section,
 .contact {
@@ -382,6 +386,8 @@ h3 {
 
 .mission-button,
 .filter-button,
+.timeline-filter,
+.timeline-node,
 .resume-tab {
   width: 100%;
   min-height: 3.4rem;
@@ -409,6 +415,8 @@ h3 {
 
 .mission-button.active,
 .filter-button.active,
+.timeline-filter.active,
+.timeline-node.active,
 .resume-tab.active {
   border-color: rgba(228, 179, 95, 0.62);
   color: var(--text);
@@ -457,6 +465,7 @@ h3 {
 .tech-row,
 .mission-links,
 .filter-bar,
+.timeline-filter-bar,
 .resume-switch,
 .contact-actions {
   display: flex;
@@ -478,15 +487,126 @@ h3 {
   margin-top: 1.5rem;
 }
 
-.filter-bar {
+.filter-bar,
+.timeline-filter-bar {
   margin-bottom: 1rem;
 }
 
 .filter-button,
+.timeline-filter,
 .resume-tab {
   width: auto;
   padding: 0.7rem 0.9rem;
   min-height: 2.6rem;
+}
+
+.timeline-console {
+  padding: clamp(1rem, 3vw, 1.4rem);
+}
+
+.timeline-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.timeline-track {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.15rem;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  left: 0.34rem;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(228, 179, 95, 0.72), rgba(126, 183, 199, 0.18));
+}
+
+.timeline-node {
+  position: relative;
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.85rem 0.9rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -1.08rem;
+  top: 1.15rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid rgba(228, 179, 95, 0.72);
+  border-radius: 50%;
+  background: #050609;
+  box-shadow: 0 0 0 4px rgba(228, 179, 95, 0.08);
+}
+
+.timeline-node.active .timeline-dot {
+  background: var(--amber);
+  box-shadow: 0 0 24px rgba(228, 179, 95, 0.48);
+}
+
+.timeline-date {
+  color: var(--blue);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.timeline-node strong {
+  color: var(--text);
+}
+
+.timeline-node span:last-child {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.timeline-detail {
+  position: relative;
+  min-height: 24rem;
+  padding: clamp(1.25rem, 4vw, 2.2rem);
+  overflow: hidden;
+}
+
+.timeline-detail::before {
+  content: "";
+  position: absolute;
+  right: -4rem;
+  bottom: -5rem;
+  width: 16rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(228, 179, 95, 0.24);
+  background:
+    radial-gradient(circle, rgba(228, 179, 95, 0.18), transparent 58%),
+    conic-gradient(from 120deg, transparent, rgba(126, 183, 199, 0.28), transparent);
+}
+
+.timeline-detail > * {
+  position: relative;
+}
+
+.timeline-meta,
+.timeline-detail p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.timeline-points {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.1rem;
+}
+
+.timeline-points li::marker {
+  color: var(--blue);
 }
 
 .skill-grid {
@@ -586,6 +706,7 @@ h3 {
 @media (max-width: 900px) {
   .hero,
   .mission-layout,
+  .timeline-layout,
   .intro-panel,
   .contact,
   .resume-card {
@@ -626,7 +747,8 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .mission-detail {
+  .mission-detail,
+  .timeline-detail {
     min-height: auto;
   }
 }
