@@ -97,6 +97,10 @@ const projects = [
     tech: ["Python", "K-Means", "Clustering", "Customer Analytics", "Data Visualization"],
     links: [
       {
+        label: "Live App",
+        url: "https://customer-personality-segmentation-xdyrd6ktfijmnfht5fvqxu.streamlit.app"
+      },
+      {
         label: "Presentation",
         url: "https://docs.google.com/presentation/d/1Zz7MsoQPBeqOk47nzUgQ3Wcd1poMnIE8/edit?usp=sharing&ouid=100434361919031081474&rtpof=true&sd=true"
       }
@@ -115,6 +119,10 @@ const projects = [
     ],
     tech: ["Python", "Decision Trees", "Random Forests", "Classification", "Model Metrics"],
     links: [
+      {
+        label: "Live App",
+        url: "https://edtech-lead-scorer-wzwevsh6plafque3vbnhxq.streamlit.app"
+      },
       {
         label: "Presentation",
         url: "https://docs.google.com/presentation/d/1pNhtiN4wWZtC4mt3LkWRVlN8vwozoBHp/edit?usp=sharing&ouid=100434361919031081474&rtpof=true&sd=true"
