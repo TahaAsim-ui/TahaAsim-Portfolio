@@ -16,6 +16,6 @@ Then visit `http://127.0.0.1:5173`.
 ## Content
 
 - Current professional experience and education timeline
-- Five data science, machine learning, data engineering, and applied AI projects
+- Nine software, data science, machine learning, data engineering, and applied AI projects
 - Resume-backed impact metrics, skills, award, and certificates
 - Current resume at `assets/resumes/Taha_Asim_Resume.pdf`

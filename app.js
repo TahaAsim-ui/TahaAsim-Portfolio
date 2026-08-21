@@ -1,5 +1,61 @@
 const projects = [
   {
+    title: "Smart Scout Football Recruitment Tool",
+    type: "Product + AI Search",
+    short: "Next.js, Prisma, PostgreSQL",
+    description:
+      "A football recruitment web app for searching players, comparing player DNA, and finding similar or underrated alternatives. This project is still being actively worked on.",
+    points: [
+      "Built a search-first scouting workflow with player profiles, comparison views, and similar-player recommendations.",
+      "Added deterministic AI Scout Search for prompts like 'Find me a cheaper right winger similar to Saka under 23.'",
+      "Seeded a PostgreSQL database with player stats, DNA vectors, clubs, leagues, and style tags while leaving room for future Sportmonks live-data ingestion."
+    ],
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AI Search"],
+    links: [{ label: "Repository", url: "https://github.com/TahaAsim-ui/football-scout" }]
+  },
+  {
+    title: "Full-Stack Electric Car E-Commerce Platform",
+    type: "Software Engineering",
+    short: "React, Node, Express, MongoDB",
+    description:
+      "A fully functioning electric car e-commerce web app with catalog discovery, purchase flow, financial tooling, and user support features.",
+    points: [
+      "Built with React, Node.js, Express, and MongoDB across the frontend, backend, and database layers.",
+      "Implemented catalog filtering, a loan calculator, checkout flow, and chatbot support.",
+      "Prioritized user experience and system reliability through iterative testing and refinement."
+    ],
+    tech: ["React", "Node.js", "Express", "MongoDB", "UX"],
+    links: [{ label: "Repository", url: "https://github.com/Asim-Taha/EECS4413" }]
+  },
+  {
+    title: "Marvel Inspired Tower Defence Game",
+    type: "Interactive Systems",
+    short: "Vanilla JS game prototype",
+    description:
+      "A vanilla HTML/CSS/JavaScript tower defense prototype inspired by classic Marvel web games, built without external assets or a game engine.",
+    points: [
+      "Implemented a top-down city map with waves, boss fights, and upgradeable character turrets.",
+      "Built procedural canvas combat effects and game-state logic from scratch.",
+      "Shows comfort with interaction loops, animation timing, and rapid playable prototyping."
+    ],
+    tech: ["JavaScript", "Canvas", "Game Logic", "HTML", "CSS"],
+    links: [{ label: "Repository", url: "https://github.com/TahaAsim-ui/StarkTowerDefence-prototype-" }]
+  },
+  {
+    title: "YUNeedMoney Finance Management App",
+    type: "Software + FinTech",
+    short: "Finance dashboard with Plaid and OpenAI",
+    description:
+      "A full-stack JavaScript finance app for tracking spending, budgets, and transactions with real-time financial dashboarding.",
+    points: [
+      "Integrated Plaid and OpenAI APIs to connect financial data with smarter user-facing support.",
+      "Implemented JWT authentication and MongoDB storage.",
+      "Connects product thinking, API integration, and financial data visualization."
+    ],
+    tech: ["JavaScript", "Plaid", "OpenAI API", "JWT", "MongoDB"],
+    links: [{ label: "Repository", url: "https://github.com/MM120-i/YUNeedMoney" }]
+  },
+  {
     title: "ExtraaLearn Lead Conversion Scorer",
     type: "Machine Learning",
     short: "88% recall across 4,612 leads",
