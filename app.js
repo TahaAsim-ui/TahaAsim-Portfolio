@@ -1,176 +1,118 @@
 const projects = [
   {
-    title: "Smart Scout Football Recruitment Tool",
-    type: "Product + AI Search",
-    short: "Next.js, Prisma, PostgreSQL",
+    title: "ExtraaLearn Lead Conversion Scorer",
+    type: "Machine Learning",
+    short: "88% recall across 4,612 leads",
     description:
-      "A football recruitment web app for searching players, comparing player DNA, and finding similar or underrated alternatives. This project is still being actively worked on.",
+      "A lead-scoring system that helps an EdTech business identify high-intent prospects while minimizing costly false negatives.",
     points: [
-      "Built a search-first scouting workflow with player profiles, comparison views, and similar-player recommendations.",
-      "Added deterministic AI Scout Search for prompts like 'Find me a cheaper right winger similar to Saka under 23.'",
-      "Seeded a PostgreSQL database with player stats, DNA vectors, clubs, leagues, and style tags while leaving room for future Sportmonks live-data ingestion."
+      "Developed and hyperparameter-tuned a Random Forest classifier on 4,612 EdTech leads.",
+      "Optimized for recall, reaching 88% to reduce the risk of missing likely conversions.",
+      "Used feature importance analysis to identify website engagement as the strongest conversion signal."
     ],
-    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "AI Search"],
-    links: [{ label: "Repository", url: "https://github.com/TahaAsim-ui/football-scout" }]
+    tech: ["Python", "Random Forest", "Classification", "Hyperparameter Tuning", "Feature Importance"],
+    links: [
+      {
+        label: "Live App",
+        url: "https://edtech-lead-scorer-wzwevsh6plafque3vbnhxq.streamlit.app/"
+      }
+    ]
   },
   {
-    title: "Full-Stack Electric Car E-Commerce Platform",
-    type: "Software Engineering",
-    short: "React, Node, Express, MongoDB",
+    title: "Customer Segmentation Using Machine Learning",
+    type: "Data Science",
+    short: "3 segments from 2,216 customers",
     description:
-      "A fully functioning electric car e-commerce web app with catalog discovery, purchase flow, financial tooling, and user support features.",
+      "A customer analytics pipeline that turns retail behavior and demographic data into actionable audience segments.",
     points: [
-      "Built with React, Node.js, Express, and MongoDB across the frontend, backend, and database layers.",
-      "Implemented catalog filtering, a loan calculator, checkout flow, and chatbot support.",
-      "Prioritized user experience and system reliability through iterative testing and refinement."
+      "Profiled 2,216 retail customers using behavioral and demographic features.",
+      "Applied StandardScaler, K-Means, and silhouette analysis to identify three distinct segments.",
+      "Translated the clusters into practical targeting, retention, and personalization opportunities."
     ],
-    tech: ["React", "Node.js", "Express", "MongoDB", "UX"],
-    links: [{ label: "Repository", url: "https://github.com/Asim-Taha/EECS4413" }]
+    tech: ["Python", "K-Means", "StandardScaler", "Silhouette Analysis", "Customer Analytics"],
+    links: [
+      {
+        label: "Live App",
+        url: "https://customer-personality-segmentation-xdyrd6ktfijmnfht5fvqxu.streamlit.app/"
+      }
+    ]
   },
   {
-    title: "Marvel Inspired Tower Defence Game",
-    type: "Interactive Systems",
-    short: "Vanilla JS game prototype",
+    title: "World Cup Match Outcome Modeling",
+    type: "Predictive Modeling",
+    short: "Win, draw, and loss probabilities",
     description:
-      "A vanilla HTML/CSS/JavaScript tower defense prototype inspired by classic Marvel web games, built without external assets or a game engine.",
+      "A football match prediction system that estimates outcome probabilities for World Cup fixtures from historical international results.",
     points: [
-      "Implemented a top-down city map with waves, boss fights, and upgradeable character turrets.",
-      "Built procedural canvas combat effects and game-state logic from scratch.",
-      "Shows comfort with interaction loops, animation timing, and rapid playable prototyping."
+      "Engineered predictive features from historical international match results.",
+      "Used XGBoost to model non-linear patterns behind match outcomes.",
+      "Generated interpretable win, draw, and loss probabilities for tournament fixtures."
     ],
-    tech: ["JavaScript", "Canvas", "Game Logic", "HTML", "CSS"],
-    links: [{ label: "Repository", url: "https://github.com/TahaAsim-ui/StarkTowerDefence-prototype-" }]
-  },
-  {
-    title: "YUNeedMoney Finance Management App",
-    type: "Software + FinTech",
-    short: "Finance dashboard with Plaid and OpenAI",
-    description:
-      "A full-stack JavaScript finance app for tracking spending, budgets, and transactions with real-time financial dashboarding.",
-    points: [
-      "Integrated Plaid and OpenAI APIs to connect financial data with smarter user-facing support.",
-      "Implemented JWT authentication and MongoDB storage.",
-      "Connects product thinking, API integration, and financial data visualization."
-    ],
-    tech: ["JavaScript", "Plaid", "OpenAI API", "JWT", "MongoDB"],
-    links: [{ label: "Repository", url: "https://github.com/MM120-i/YUNeedMoney" }]
+    tech: ["Python", "XGBoost", "Feature Engineering", "Probability Modeling", "Sports Analytics"],
+    links: [
+      {
+        label: "Live App",
+        url: "https://world-cup-prediction-model-buu24kpc3-taha-asims-projects.vercel.app/"
+      }
+    ]
   },
   {
     title: "Automated API Data Pipeline",
     type: "Data Engineering",
     short: "CoinGecko to Neon PostgreSQL",
     description:
-      "A Python ETL pipeline that extracts CoinGecko crypto market data, transforms it, and loads daily snapshots into Neon PostgreSQL.",
+      "An automated Python pipeline that moves cryptocurrency market data from the CoinGecko API into PostgreSQL for reliable daily analysis.",
     points: [
-      "Added upserts to keep daily market snapshots consistent and usable.",
-      "Included unit tests, environment configuration, and GitHub Actions for CI/CD.",
-      "Scheduled runs make the pipeline repeatable instead of manually operated."
+      "Extracted API data, transformed records, and loaded structured daily snapshots through a defined SQL schema.",
+      "Implemented upsert logic so repeated runs update data safely without creating duplicates.",
+      "Added unit tests and daily GitHub Actions runs to make the workflow repeatable and observable."
     ],
-    tech: ["Python", "ETL", "PostgreSQL", "GitHub Actions", "CI/CD"],
+    tech: ["Python", "CoinGecko API", "ETL", "PostgreSQL", "GitHub Actions"],
     links: [{ label: "Repository", url: "https://github.com/TahaAsim-ui/AutomatedPipeline" }]
   },
   {
     title: "LLM-Powered Document Question Answering System",
     type: "AI Engineering",
-    short: "RAG over PDF documents",
+    short: "Grounded answers over PDF documents",
     description:
       "A Python system for querying unstructured PDF documents with natural language using a retrieval-augmented generation workflow.",
     points: [
-      "Implemented a RAG pipeline with OpenAI embeddings and FAISS vector search.",
-      "Retrieved relevant document segments and generated grounded responses from source content.",
-      "Shows applied LLM work beyond prompting: ingestion, retrieval, ranking, and answer generation."
+      "Built ingestion and retrieval around OpenAI embeddings and FAISS vector search.",
+      "Retrieved relevant document segments before generating a response grounded in the source material.",
+      "Combined PDF processing, semantic search, and answer generation into one end-to-end workflow."
     ],
     tech: ["Python", "OpenAI", "FAISS", "RAG", "PDF Processing"],
     links: [{ label: "Repository", url: "https://github.com/TahaAsim-ui/LLM-DocAnswers" }]
-  },
-  {
-    title: "Customer Personality Segmentation",
-    type: "Data Science",
-    short: "Unsupervised learning with K-Means",
-    description:
-      "A machine learning project applying unsupervised learning to more than 2,200 customer records to identify behavioral clusters.",
-    points: [
-      "Used K-Means clustering to segment customers into distinct behavioral groups.",
-      "Translated clusters into insights for personalized marketing, retention strategy, and ROI optimization.",
-      "Shows the data science workflow from records to business-facing recommendations."
-    ],
-    tech: ["Python", "K-Means", "Clustering", "Customer Analytics", "Data Visualization"],
-    links: [
-      {
-        label: "Live App",
-        url: "https://customer-personality-segmentation-xdyrd6ktfijmnfht5fvqxu.streamlit.app"
-      },
-      {
-        label: "Presentation",
-        url: "https://docs.google.com/presentation/d/1Zz7MsoQPBeqOk47nzUgQ3Wcd1poMnIE8/edit?usp=sharing&ouid=100434361919031081474&rtpof=true&sd=true"
-      }
-    ]
-  },
-  {
-    title: "Predictive Modelling for Lead Conversion in EdTech",
-    type: "Machine Learning",
-    short: "Decision Trees and Random Forests",
-    description:
-      "A supervised machine learning project for predicting user conversion rates and helping marketing teams prioritize effort with data.",
-    points: [
-      "Used Python to develop Decision Tree and Random Forest models.",
-      "Visualized model performance metrics so results could be understood beyond the notebook.",
-      "Connected predictions to marketing prioritization and data-supported decision making."
-    ],
-    tech: ["Python", "Decision Trees", "Random Forests", "Classification", "Model Metrics"],
-    links: [
-      {
-        label: "Live App",
-        url: "https://edtech-lead-scorer-wzwevsh6plafque3vbnhxq.streamlit.app"
-      },
-      {
-        label: "Presentation",
-        url: "https://docs.google.com/presentation/d/1pNhtiN4wWZtC4mt3LkWRVlN8vwozoBHp/edit?usp=sharing&ouid=100434361919031081474&rtpof=true&sd=true"
-      }
-    ]
   }
 ];
 
 const timelineItems = [
   {
-    title: "Mercor",
+    title: "AgenQ",
     type: "Experience",
     category: "experience",
-    date: "Jan 2026 - Present",
-    meta: "AI Trainer",
+    date: "Jun 2026 - Present",
+    meta: "Research and ML Engineer",
     description:
-      "Evaluating LLM-generated responses and training model behavior toward clearer, more accurate, and more useful outputs.",
-    points: [
-      "Assessed model responses for accuracy, relevance, clarity, and completeness.",
-      "Identified weaknesses in AI outputs and provided feedback to improve response quality.",
-      "Created tutorials and training materials to guide AI systems toward better performance."
-    ]
+      "Researching products and industry trends, then translating findings into platform upgrades. Built an end-to-end MCP proof of concept that exposes authenticated OpenAPI endpoints as AI-callable tools with secure API key injection, integration tests, and passing CI."
+  },
+  {
+    title: "DataSphere Lab",
+    type: "Experience",
+    category: "experience",
+    date: "Jun 2025 - Present",
+    meta: "Part-time Data Scientist",
+    description:
+      "Designed a 45-field data dictionary across five datasets, engineered 30+ recommendation features, prototyped content-based filtering with pandas, NumPy, and scikit-learn, and documented SQL used to validate user and interaction data."
   },
   {
     title: "McGill University",
     type: "Education",
     category: "education",
     date: "Jan 2026 - Present",
-    meta: "Master of Management in Analytics",
+    meta: "Master of Management in Analytics (Part-time)",
     description:
-      "Graduate analytics program focused on applying data, business thinking, and technical tools to decision-making.",
-    points: [
-      "Building toward deeper analytics, data strategy, and applied business problem-solving.",
-      "Connecting software and data engineering experience with management-facing analytics."
-    ]
-  },
-  {
-    title: "York University",
-    type: "Education",
-    category: "education",
-    date: "Sep 2020 - Apr 2025",
-    meta: "Honors Bachelor of Science, Computer Science",
-    description:
-      "Computer science foundation across software development, data structures, systems thinking, and applied technical projects.",
-    points: [
-      "Built projects across full-stack development, data science, data engineering, and interactive systems.",
-      "Developed the technical base behind the portfolio's product and AI work."
-    ]
+      "Graduate study connecting analytics, technical execution, and business decision-making."
   },
   {
     title: "Toronto Hydro",
@@ -179,39 +121,25 @@ const timelineItems = [
     date: "Jan 2023 - Dec 2023",
     meta: "Data & Tech Intern",
     description:
-      "Worked on reporting, data pipelines, automation, and operational dashboards for field and business teams.",
-    points: [
-      "Created an interactive dashboard with 15+ KPIs using SQL, Excel VBA, and SAP.",
-      "Built operational reporting from SAP field deployment data, improving visibility into field operations.",
-      "Supported data extraction, transformation, and loading for structured analysis."
-    ]
+      "Built Excel/VBA reporting that cut resource waste by 17%, a 12-month SAP dashboard that contributed to a 15% reduction in resource spending, dispatcher analysis that helped reduce misrouted emergency calls by about 23%, and Python ETL pipelines for automated reporting."
   },
   {
-    title: "Lingobility",
-    type: "Experience",
-    category: "experience",
-    date: "Aug 2022 - Mar 2023",
-    meta: "Front End Developer Intern",
-    description:
-      "Helped build an early-stage language-learning application from design into a partially functioning product.",
-    points: [
-      "Contributed to interface development, testing, and frontend implementation.",
-      "Worked with CSS and manual testing while collaborating in a remote internship setting."
-    ]
-  },
-  {
-    title: "hEr VOLUTION",
+    title: "hEr Volution",
     type: "Experience",
     category: "experience",
     date: "Jul 2022 - Sep 2022",
-    meta: "Coding Instructor",
+    meta: "Advanced Coding Instructor",
     description:
-      "Taught programming fundamentals through interactive lessons, review sessions, and technical support.",
-    points: [
-      "Helped students build programming skills and apply concepts in real-world projects.",
-      "Simulated debugging and QA scenarios to strengthen problem-solving confidence.",
-      "Supported structured learning and test preparation."
-    ]
+      "Delivered interactive programming lessons, debugging and QA simulations, and personalized code reviews. Structured learning and test preparation raised average scores by 20% by the final weeks."
+  },
+  {
+    title: "York University",
+    type: "Education",
+    category: "education",
+    date: "Sep 2020 - Apr 2025",
+    meta: "Honors Bachelor of Science, Computer Science",
+    description:
+      "Built a computer science foundation spanning software development, data structures, systems, and applied data and AI projects."
   }
 ];
 
@@ -219,40 +147,40 @@ const timelineYears = ["2020", "2022", "2023", "2025", "2026"];
 
 const skills = [
   {
-    title: "Software Product Development",
+    title: "Programming Languages",
     category: "software",
-    copy: "I build user-facing product features and the backend structure behind them: responsive interfaces, API routes, authentication, database-backed workflows, dashboards, and practical UX refinements.",
-    tags: ["React", "Node.js", "Express", "MongoDB", "JWT"]
+    copy: "Production-oriented programming across data workflows, APIs, modeling, automation, and interactive applications.",
+    tags: ["Python", "SQL", "JavaScript", "TypeScript", "C++"]
   },
   {
-    title: "Data Science and Machine Learning",
+    title: "Data Science & Machine Learning",
     category: "data",
-    copy: "I work with exploratory analysis, feature thinking, supervised and unsupervised modelling, model comparison, and visualizations that make patterns and performance easier to explain.",
-    tags: ["Python", "K-Means", "Random Forests", "Metrics", "Visualization"]
+    copy: "From feature engineering and recommender prototypes to tuned classifiers, clustering, evaluation, and business-facing interpretation.",
+    tags: ["scikit-learn", "XGBoost", "pandas", "NumPy", "Feature Engineering"]
   },
   {
-    title: "Data Engineering",
+    title: "Data & Databases",
     category: "data",
-    copy: "I build pipelines that move data from APIs or raw sources into structured storage with repeatable runs, validation, upserts, environment configuration, tests, and deployment automation.",
-    tags: ["ETL", "PostgreSQL", "APIs", "Testing", "GitHub Actions"]
+    copy: "Reliable pipelines and structured datasets designed for analysis, validation, scheduled delivery, and downstream modeling.",
+    tags: ["ETL Pipelines", "Relational Databases", "PostgreSQL", "Snowflake", "Data Mining"]
   },
   {
-    title: "AI and LLM Systems",
+    title: "AI & Agent Systems",
     category: "ai",
-    copy: "I design AI workflows around ingestion, embeddings, vector search, retrieval, answer generation, and user-facing interfaces that keep outputs grounded in source material.",
-    tags: ["OpenAI", "FAISS", "RAG", "Embeddings", "PDFs"]
+    copy: "Applied AI systems that connect models to useful context and real workflows through retrieval, tool protocols, and secure integrations.",
+    tags: ["MCP SDK", "OpenAI", "FAISS", "RAG", "Embeddings"]
   },
   {
-    title: "Automation and Reliability",
+    title: "Backend & Integration",
     category: "systems",
-    copy: "I care about making systems easier to run: scheduled jobs, CI/CD, tests, configuration, logging, and project structure that reduce manual effort and make behavior easier to trust.",
-    tags: ["CI/CD", "Unit Tests", "Config", "Scheduling", "DevEx"]
+    copy: "Backend connections that safely move structured information between products, services, AI tools, and reporting systems.",
+    tags: ["REST APIs", "OpenAPI", "JSON/XML", "System Integration", "Postman"]
   },
   {
-    title: "Interactive Prototypes",
+    title: "Analytics Platforms",
     category: "systems",
-    copy: "I prototype interactive experiences where feedback matters: state transitions, animation, canvas effects, controls, progression, simulations, and playful interfaces that still feel intentional.",
-    tags: ["Canvas", "Game Logic", "State", "Animation", "UX"]
+    copy: "Tools for turning operational and analytical data into accessible dashboards, reports, and collaborative workflows.",
+    tags: ["Power BI", "Tableau", "Excel", "Databricks", "SharePoint", "Linux"]
   }
 ];
 
@@ -281,6 +209,7 @@ function renderProjects() {
     button.className = `mission-button${index === selectedProject ? " active" : ""}`;
     button.type = "button";
     button.setAttribute("role", "tab");
+    button.setAttribute("aria-controls", "mission-detail");
     button.setAttribute("aria-selected", String(index === selectedProject));
     button.innerHTML = `<strong>${project.title}</strong><span>${project.short}</span>`;
     button.addEventListener("click", () => {
@@ -320,6 +249,7 @@ function renderFilters() {
     button.className = `filter-button${value === selectedFilter ? " active" : ""}`;
     button.type = "button";
     button.textContent = label;
+    button.setAttribute("aria-pressed", String(value === selectedFilter));
     button.addEventListener("click", () => {
       selectedFilter = value;
       renderFilters();
@@ -359,6 +289,7 @@ function renderTimelineFilters() {
     button.className = `timeline-filter${value === selectedTimelineFilter ? " active" : ""}`;
     button.type = "button";
     button.textContent = label;
+    button.setAttribute("aria-pressed", String(value === selectedTimelineFilter));
     button.addEventListener("click", () => {
       selectedTimelineFilter = value;
       renderTimelineFilters();
@@ -426,13 +357,16 @@ function getTimelineStartYear(item) {
 }
 
 function tickClock() {
+  if (!clock) return;
   const now = new Date();
   clock.textContent = now.toLocaleTimeString("en-CA", { hour12: false });
 }
 
 function startSpaceCanvas() {
   const canvas = document.querySelector("#space-canvas");
+  if (!canvas) return;
   const ctx = canvas.getContext("2d");
+  if (!ctx) return;
   const pointer = { x: 0.5, y: 0.5 };
   let stars = [];
   let comets = [];
